@@ -90,6 +90,7 @@
           <tr><td>Payment-app notifications (optional)<br><code>Notification access</code></td><td>To record payments that send no bank SMS, such as UPI Lite or some wallet payments. Only notifications from payment apps (Samsung Wallet, Google Pay, Amazon Pay, PhonePe, Paytm, BHIM, CRED, Kotak) are looked at; notifications from every other app are ignored without being read.</td><td>As payment apps post them, including when the app is closed.</td></tr>
           <tr><td>Notifications<br><code>POST_NOTIFICATIONS</code></td><td>To show the payment banner, bill reminders and, only if you turn it on, Pop’s evening check-in.</td><td>When a payment is recorded, a bill is due, or at about 8 pm if you enabled the check-in.</td></tr>
           <tr><td>Display over other apps (optional)<br><code>SYSTEM_ALERT_WINDOW</code></td><td>To show the “Rich card” banner style on top of the app you are using.</td><td>When a payment is recorded, if you chose that style.</td></tr>
+          <tr><td>Google Play purchases (optional)<br><code>com.android.vending.BILLING</code>, <code>ACCESS_NETWORK_STATE</code></td><td>To let you buy an optional “support the developer” item. The payment is handled entirely by Google Play, so the app never sees your card or UPI details and nothing in the app is locked or unlocked by it. The network-state permission comes with Google’s billing library, which uses it only to tell whether Google Play can be reached. It is not used to send anything, and the app still has no internet permission.</td><td>Only when you open Settings → Support CutBack.</td></tr>
           <tr><td>Run at startup<br><code>RECEIVE_BOOT_COMPLETED</code></td><td>To re-schedule the daily bill reminder and the optional evening check-in after your phone restarts.</td><td>After a restart.</td></tr>
         </tbody>
       </table>
@@ -102,6 +103,7 @@
     <ul>
       <li>Your payments: amount, date, bank or app, account or card last digits, payee name or UPI ID, reference number, balance, and the text of the bank message it came from.</li>
       <li>Bills read from messages: biller, amount, due date, last digits of the card or account, and the payment link from the message. Tapping “Pay now” opens that link in your browser; the app itself never goes online.</li>
+      <li>Whether you have ever bought a support item (a yes or no, used only for a small thank-you in Settings). Google Play keeps its own purchase record under its own terms.</li>
       <li>Pop’s comments (teasing or praise about your spending) are worked out on your phone from your own totals. Nothing is sent anywhere.</li>
       <li>What you add: categories, notes, splits, money owed to you, monthly plans and your name as your bank prints it (used only to recognise transfers between your own accounts).</li>
       <li>A short on-device activity log (for example “SMS from a bank: payment saved”) so you can see why a banner did or did not appear. It never contains message text.</li>
